@@ -4,8 +4,9 @@ body *:not(script) {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	font-family: sans-serif;
 	text-align: center;
-	/* border: 1px solid; */
+	border: 1px solid;
 	outline: none;
 }
 
@@ -28,4 +29,8 @@ button.add {
 
 .remove::selection {
 	background: none;
+}
+
+.total-time {
+	font-style: italic;
 }
