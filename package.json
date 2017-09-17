@@ -1,5 +1,6 @@
 {
 	"name": "set-man",
+	"productName": "Set Man",
 	"version": "1.0.0",
 	"description": "A tool to help manage set lists",
 	"main": "main.js",
