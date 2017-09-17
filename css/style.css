@@ -1,0 +1,31 @@
+body,
+body *:not(script) {
+	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	/* border: 1px solid; */
+	outline: none;
+}
+
+body input,
+body button,
+body span,
+.inline-block {
+	display: inline-block !important;
+	width: auto !important;
+}
+
+button {
+	border: 1px solid rgba(202, 202, 202, 1);
+	cursor: pointer;
+}
+
+button.add {
+	height: 100%;
+}
+
+.remove::selection {
+	background: none;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Set Man 1.0</title>
+
+	<!-- styles -->
+	<!-- <link rel="stylesheet" href="css/foundation.min.css" /> -->
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+	<h1>Set Man</h1>
+	<div class="ui">
+		<div class="add-song">
+			<input type="text" />
+			<input type="text" />
+			<button class="add">Add</button>
+		</div>
+	</div>
+	<div class="display">
+		<h3>Set List</h3>
+		<div class="songs">
+
+		</div>
+	</div>
+</body>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-database.js"></script>
+<script>
+	firebase.initializeApp({
+		apiKey: "AIzaSyAKqRvFKlfnx7x016iQhr6GJ77--6XLips",
+		authDomain: "set-man.firebaseapp.com",
+		databaseURL: "https://set-man.firebaseio.com",
+		projectId: "set-man",
+		storageBucket: "",
+		messagingSenderId: "625185003867"
+	});
+</script>
+
+<!-- js files -->
+<script>
+	require('./js/renderer.js');
+</script>
+
+</html>
