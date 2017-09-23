@@ -7,15 +7,13 @@
 
 const database = firebase.database().ref();
 
-let id = 0;
-
 database.once('value', d => {
 	data.songs = d.val() || [];
 
 	// gets greatest songId value and sets it as starting point for adding new ids
 	id = data.songs.map(song => Number(song.id)).sort().pop() || 0;
 
-	calcTotalTime();
+	calctotalSetTime();
 
 	renderSongs();
 });
@@ -23,21 +21,27 @@ database.once('value', d => {
 // ---------------------------------------------------------------------------------------------------------------------
 
 // DATA
-// initialize the data object
 
+// initialize the data object
 var data = {
-	songs: [],
-	totalTime: 0
+	songs: [], // gets populated by the Firebase call
+	leads: ['bobbie', 'jack', 'tom'],
+	genres: ['pop', 'rock', 'country'],
+	totalSetTime: 0
 };
+
+// variables
+var age, duration, genre, id, lead, title;
+
 
 // ---------------------------------------------------------------------------------------------------------------------
 
 // DOM
 
-const [nameInp, durInp] = document.querySelectorAll('.ui input'),
-	addBtn = document.querySelector('button.add'),
+const [titleInp, leadInp, genreInp, ageInp, durationInp] = document.querySelectorAll('.ui input'),
 	songListDisp = document.querySelector('.songs'),
-	totalTimeDisp = document.querySelector('.total-time');
+	addBtn = document.querySelector('button.add'),
+	totalSetTimeDisp = document.querySelector('.total-time');
 
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -45,17 +49,28 @@ const [nameInp, durInp] = document.querySelectorAll('.ui input'),
 
 // add
 function addSong() {
-	const name = nameInp.value || null,
-		dur = durInp.value || null;
+	title = titleInp.value || null;
+	lead = leadInp.value || null;
+	genre = genreInp.value || null;
+	age = ageInp.value || null;
+	duration = durationInp.value || null;
+
+	// Where songs are built...
+	// -------------------------
 
 	data.songs.push({
 		id: ++id,
-		name: name,
-		dur: dur
+		title: title,
+		lead: lead,
+		genre: genre,
+		age: age,
+		duration: duration
 	});
 
-	[nameInp, durInp].forEach(input => input.value = null);
-	nameInp.focus();
+	// -------------------------
+
+	[titleInp, durationInp].forEach(input => input.value = null);
+	titleInp.focus();
 
 	renderSongs();
 }
@@ -71,9 +86,9 @@ function removeSong() {
 }
 
 // calculate total time
-function calcTotalTime() {
-	data.totalTime = data.songs.reduce((a, b) => {
-		b = b.dur.split(':');
+function calctotalSetTime() {
+	data.totalSetTime = data.songs.reduce((a, b) => {
+		b = b.duration.split(':');
 		b = ((Number(b[0]) * 60) || 0) + (Number(b[1]) || 0);
 
 		return a + b;
@@ -86,7 +101,7 @@ function calcTotalTime() {
 
 function renderSongs() {
 	// send to database
-	database.set(data.songs || null);
+	database.set(data.songs.length > 0 ? data.songs : null);
 
 	if (data.songs.map)
 		songListDisp.innerHTML = data.songs
@@ -101,13 +116,13 @@ function renderSongs() {
 					>
 						(X)
 					</span>
-					<div class="inline-block">${song.name} - ${song.dur}</div>
+					<div class="inline-block">${song.title} - ${song.duration}</div>
 				</div>
 			`)
 			.join('');
 
 	document.querySelectorAll('.remove').forEach(remove => remove.addEventListener('click', removeSong.bind(remove)));
 
-	calcTotalTime();
-	totalTimeDisp.textContent = data.totalTime;
+	calctotalSetTime();
+	totalSetTimeDisp.textContent = data.totalSetTime;
 }

@@ -1,36 +1,30 @@
 body,
 body *:not(script) {
-	display: block;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
-	text-align: center;
-	border: 1px solid;
-	outline: none;
-}
+  display: block;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center;
+  border: 1px solid black;
+  outline: none; }
+  body label,
+  body input,
+  body button,
+  body span,
+  body .inline-block,
+  body *:not(script) label,
+  body *:not(script) input,
+  body *:not(script) button,
+  body *:not(script) span,
+  body *:not(script) .inline-block {
+    display: inline-block !important;
+    width: auto !important; }
+  body button,
+  body *:not(script) button {
+    border: 1px solid #cacaca;
+    cursor: pointer !important; }
+  body .remove::selection,
+  body *:not(script) .remove::selection {
+    background: none; }
 
-body input,
-body button,
-body span,
-.inline-block {
-	display: inline-block !important;
-	width: auto !important;
-}
-
-button {
-	border: 1px solid rgba(202, 202, 202, 1);
-	cursor: pointer;
-}
-
-button.add {
-	height: 100%;
-}
-
-.remove::selection {
-	background: none;
-}
-
-.total-time {
-	font-style: italic;
-}
+/*# sourceMappingURL=style.css.map */

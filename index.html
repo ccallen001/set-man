@@ -6,24 +6,37 @@
 	<title>Set Man 1.0</title>
 
 	<!-- styles -->
-	<!-- <link rel="stylesheet" href="css/foundation.min.css" /> -->
+	<link rel="stylesheet" href="css/foundation.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 	<h1>Set Man</h1>
 	<div class="ui">
-		<div class="add-song">
-			<input type="text" />
-			<input type="text" />
-			<button class="add">Add</button>
+		<div>
+			<label>Title: </label>
+			<input type="text" class="title" />
 		</div>
+		<div>
+			<label>Lead: </label>
+			<input type="text" class="tead" />
+			<label>Genre: </label>
+			<input type="text" class="genre" />
+			<label>Age: </label>
+			<input type="number" min="0" class="age" />
+		</div>
+		<div>
+			<label>Duration: </label>
+			<input type="text" class="duration" />
+		</div>
+		<!-- add button -->
+		<button class="add">Add</button>
 	</div>
 	<div class="display">
 		<h3>Set List</h3>
 		<div class="songs">
 			<!--
-				songs displayed here
+				songs render here
 			-->
 		</div>
 		<h4>total time: <span class="total-time"></span> secs</h4>
@@ -42,11 +55,13 @@
 		storageBucket: "",
 		messagingSenderId: "625185003867"
 	});
+
 </script>
 
 <!-- js files -->
 <script>
 	require('./js/renderer.js');
+
 </script>
 
 </html>
