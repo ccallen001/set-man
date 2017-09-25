@@ -14,23 +14,33 @@
 	<h1>Set Man</h1>
 	<div class="ui">
 		<div>
-			<label>Title: </label>
-			<input type="text" class="title" />
+			<div class="inline-block">
+				<label>Title: </label>
+				<input type="text" class="title" />
+			</div>
 		</div>
 		<div>
-			<label>Lead: </label>
-			<input type="text" class="tead" />
-			<label>Genre: </label>
-			<input type="text" class="genre" />
-			<label>Age: </label>
-			<input type="number" min="0" class="age" />
+			<div class="inline-block">
+				<label>Lead: </label>
+				<input type="text" class="lead" />
+			</div>
+			<div class="inline-block">
+				<label>Genre: </label>
+				<input type="text" class="genre" />
+			</div>
+			<div class="inline-block">
+				<label>Age: </label>
+				<input type="number" min="0" class="age" />
+			</div>
 		</div>
 		<div>
-			<label>Duration: </label>
-			<input type="text" class="duration" />
+			<div class="inline-block">
+				<label>Duration: </label>
+				<input type="text" class="duration" />
+			</div>
 		</div>
 		<!-- add button -->
-		<button class="add">Add</button>
+		<button class="add">ADD</button>
 	</div>
 	<div class="display">
 		<h3>Set List</h3>
@@ -55,13 +65,11 @@
 		storageBucket: "",
 		messagingSenderId: "625185003867"
 	});
-
 </script>
 
 <!-- js files -->
 <script>
 	require('./js/renderer.js');
-
 </script>
 
 </html>

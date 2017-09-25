@@ -49,30 +49,43 @@ const [titleInp, leadInp, genreInp, ageInp, durationInp] = document.querySelecto
 
 // add
 function addSong() {
-	title = titleInp.value || null;
-	lead = leadInp.value || null;
-	genre = genreInp.value || null;
-	age = ageInp.value || null;
-	duration = durationInp.value || null;
+	title = titleInp.value.trim() || null;
+	lead = leadInp.value.trim() || null;
+	genre = genreInp.value.trim() || null;
+	age = ageInp.value.trim() || null;
+	duration = durationInp.value.trim() || null;
 
-	// Where songs are built...
-	// -------------------------
+	if (
+		!data.leads.includes(lead.toLowerCase()) ||
+		!data.genres.includes(genre.toLowerCase()) ||
+		window.isNaN(Number(age)) ||
+		!/[0-9]:[0-9][0-9]/.test(duration)
+	) {
+		window.alert('Oops! There was an error. Please try again!');
+	} else {
 
-	data.songs.push({
-		id: ++id,
-		title: title,
-		lead: lead,
-		genre: genre,
-		age: age,
-		duration: duration
-	});
+		// Where songs are made...
+		// -------------------------
 
-	// -------------------------
+		data.songs.push({
+			id: ++id,
+			title: title,
+			lead: lead,
+			genre: genre,
+			age: age,
+			duration: duration
+		});
 
-	[titleInp, durationInp].forEach(input => input.value = null);
+		// -------------------------
+
+		renderSongs();
+	}
+
+	// clear inputs
+	[titleInp, leadInp, genreInp, ageInp, durationInp]
+		.forEach(input => input.value = null);
+
 	titleInp.focus();
-
-	renderSongs();
 }
 addBtn.addEventListener('click', addSong);
 
