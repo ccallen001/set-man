@@ -2,29 +2,47 @@ body,
 body *:not(script) {
   display: block;
   box-sizing: border-box;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin-bottom: 0 !important;
+  color: #272727;
   text-align: center;
-  border: 1px solid black;
+  border-color: #727272 !important;
   outline: none; }
-  body label,
   body input,
   body button,
   body span,
   body .inline-block,
-  body *:not(script) label,
   body *:not(script) input,
   body *:not(script) button,
   body *:not(script) span,
   body *:not(script) .inline-block {
-    display: inline-block !important;
-    width: auto !important; }
+    display: inline-block !important; }
   body button,
   body *:not(script) button {
     border: 1px solid #cacaca;
+    font-weight: bold;
     cursor: pointer !important; }
   body .remove::selection,
   body *:not(script) .remove::selection {
     background: none; }
+  body .ui label,
+  body *:not(script) .ui label {
+    width: 100px;
+    font-weight: bold;
+    text-align: left; }
+  body .ui input,
+  body *:not(script) .ui input {
+    width: 212px; }
+    body .ui input.title,
+    body *:not(script) .ui input.title {
+      width: 877.8125px; }
+  body .ui button.add,
+  body *:not(script) .ui button.add {
+    padding: 12px 32px;
+    background-color: #3D92C7;
+    color: white;
+    border: none !important; }
+    body .ui button.add:focus,
+    body *:not(script) .ui button.add:focus {
+      background-color: #30D36E; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,28 +1,70 @@
 body,
 body *:not(script) {
+    // VARIABLES
+
+    // color palette
+    $black: #272727;
+    $blue: #3D92C7;
+    $green: #30D36E;
+    $gray: #727272;
+
+    // GENERALS
+
     display: block;
     box-sizing: border-box;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin-bottom: 0 !important;
+    color: $black;
     text-align: center;
-    border: 1px solid black;
+
+    // border: 1px solid $gray;
+    border-color: $gray !important;
     outline: none;
 
-    label,
     input,
     button,
     span,
     .inline-block {
         display: inline-block !important;
-        width: auto !important;
     }
 
     button {
         border: 1px solid rgba(202, 202, 202, 1);
+        font-weight: bold;
         cursor: pointer !important;
-	}
+    }
 
     .remove::selection {
         background: none;
+    }
+
+    // SPECIFICS
+
+    .ui {
+        $width: 212px;
+
+        label {
+            width: 100px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input {
+            width: $width;
+
+            &.title {
+                width: $width * 4.140625;
+            }
+        }
+
+        button.add {
+            padding: 12px 32px;
+            background-color: $blue;
+            color: white;
+            border: none !important;
+
+            &:focus {
+                background-color: $green;
+            }
+        }
     }
 }
