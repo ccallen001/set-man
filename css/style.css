@@ -5,7 +5,7 @@ body *:not(script) {
   margin-bottom: 0 !important;
   color: #272727;
   text-align: center;
-  border-color: #727272 !important;
+  border-color: #9E9E9E !important;
   outline: none; }
   body input,
   body button,
@@ -24,25 +24,52 @@ body *:not(script) {
   body .remove::selection,
   body *:not(script) .remove::selection {
     background: none; }
-  body .ui label,
-  body *:not(script) .ui label {
+  body nav ul li,
+  body *:not(script) nav ul li {
+    display: inline-block;
+    padding: 12px 32px;
+    background-color: #9E9E9E;
+    color: white;
+    font-weight: bold;
+    cursor: pointer; }
+    body nav ul li:focus, body nav ul li:hover, body nav ul li:active,
+    body *:not(script) nav ul li:focus,
+    body *:not(script) nav ul li:hover,
+    body *:not(script) nav ul li:active {
+      background-color: #3D92C7; }
+  body .view, body .add, body .get,
+  body *:not(script) .view,
+  body *:not(script) .add,
+  body *:not(script) .get {
+    display: none; }
+  body .active,
+  body *:not(script) .active {
+    display: block; }
+  body label,
+  body *:not(script) label {
     width: 100px;
     font-weight: bold;
     text-align: left; }
-  body .ui input,
-  body *:not(script) .ui input {
-    width: 212px; }
-    body .ui input.title,
-    body *:not(script) .ui input.title {
-      width: 877.8125px; }
-  body .ui button.add,
-  body *:not(script) .ui button.add {
+  body input,
+  body *:not(script) input {
+    width: 150px; }
+    body input.title,
+    body *:not(script) input.title {
+      width: 621.09375px; }
+  body button.addBtn, body button.genBtn,
+  body *:not(script) button.addBtn,
+  body *:not(script) button.genBtn {
     padding: 12px 32px;
     background-color: #3D92C7;
     color: white;
     border: none !important; }
-    body .ui button.add:focus,
-    body *:not(script) .ui button.add:focus {
+    body button.addBtn:focus, body button.addBtn:hover, body button.addBtn:active, body button.genBtn:focus, body button.genBtn:hover, body button.genBtn:active,
+    body *:not(script) button.addBtn:focus,
+    body *:not(script) button.addBtn:hover,
+    body *:not(script) button.addBtn:active,
+    body *:not(script) button.genBtn:focus,
+    body *:not(script) button.genBtn:hover,
+    body *:not(script) button.genBtn:active {
       background-color: #30D36E; }
 
 /*# sourceMappingURL=style.css.map */

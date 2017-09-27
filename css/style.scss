@@ -1,14 +1,17 @@
 body,
 body *:not(script) {
-    // VARIABLES
+    // VARIABLES -------------------------------------------------------------------------------------------------------
 
     // color palette
     $black: #272727;
     $blue: #3D92C7;
     $green: #30D36E;
-    $gray: #727272;
+    $gray: #9E9E9E;
 
-    // GENERALS
+    // dimensions
+    $width: 150px;
+
+    // GENERALS -------------------------------------------------------------------------------------------------------
 
     display: block;
     box-sizing: border-box;
@@ -37,34 +40,59 @@ body *:not(script) {
         background: none;
     }
 
-    // SPECIFICS
+    // SPECIFICS -------------------------------------------------------------------------------------------------------
 
-    .ui {
-        $width: 212px;
+    nav {
+        ul {
+            li {
+                display: inline-block;
+                padding: 12px 32px;
+                background-color: $gray;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
 
-        label {
-            width: 100px;
-            font-weight: bold;
-            text-align: left;
-        }
-
-        input {
-            width: $width;
-
-            &.title {
-                width: $width * 4.140625;
+                &:focus,
+                &:hover,
+                &:active {
+                    background-color: $blue;
+                }
             }
         }
+    }
 
-        button.add {
-            padding: 12px 32px;
-            background-color: $blue;
-            color: white;
-            border: none !important;
+    .view, .add, .get {
+        display: none;
+    }
 
-            &:focus {
-                background-color: $green;
-            }
+    .active {
+        display: block;
+    }
+
+    label {
+        width: 100px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    input {
+        width: $width;
+
+        &.title {
+            width: $width * 4.140625;
+        }
+    }
+
+    button.addBtn, button.genBtn {
+        padding: 12px 32px;
+        background-color: $blue;
+        color: white;
+        border: none !important;
+
+        &:focus,
+        &:hover,
+        &:active {
+            background-color: $green;
         }
     }
 }

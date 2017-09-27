@@ -13,7 +13,7 @@ database.once('value', d => {
 	// gets greatest songId value and sets it as starting point for adding new ids
 	id = data.songs.map(song => Number(song.id)).sort().pop() || 0;
 
-	calctotalSetTime();
+	calcTotalSongTime();
 
 	renderSongs();
 });
@@ -38,14 +38,29 @@ var age, duration, genre, id, lead, title;
 
 // DOM
 
-const [titleInp, leadInp, genreInp, ageInp, durationInp] = document.querySelectorAll('.ui input'),
-	songListDisp = document.querySelector('.songs'),
-	addBtn = document.querySelector('button.add'),
+const [view, add, get] = document.querySelectorAll('nav li'),
+	viewDisp = document.querySelector('.view'),
+	addDisp = document.querySelector('.add'),
+	getDisp = document.querySelector('.get'),
+	disps = [viewDisp, addDisp, getDisp],
+	[titleInp, leadInp, genreInp, ageInp, durationInp] = document.querySelectorAll('.add input'),
+	songListDisp = document.querySelector('.view .songs'),
+	addBtn = document.querySelector('button.addBtn'),
+	setListDisp = document.querySelector('.set'),
+	genBtn = document.querySelector('button.genBtn'),
 	totalSetTimeDisp = document.querySelector('.total-time');
 
 // ---------------------------------------------------------------------------------------------------------------------
 
 // CONTROLLERS
+
+// nav
+[view, add, get].forEach((li, i) => {
+	li.addEventListener('click', () => {
+		disps.forEach(li => li.classList.remove('active'));
+		disps[i].classList.add('active');
+	});
+});
 
 // add
 function addSong() {
@@ -99,7 +114,7 @@ function removeSong() {
 }
 
 // calculate total time
-function calctotalSetTime() {
+function calcTotalSongTime() {
 	data.totalSetTime = data.songs.reduce((a, b) => {
 		b = b.duration.split(':');
 		b = ((Number(b[0]) * 60) || 0) + (Number(b[1]) || 0);
@@ -110,8 +125,9 @@ function calctotalSetTime() {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-// RENDER FUNCTION
+// RENDER FUNCTIONS
 
+// all songs
 function renderSongs() {
 	// send to database
 	database.set(data.songs.length > 0 ? data.songs : null);
@@ -136,6 +152,17 @@ function renderSongs() {
 
 	document.querySelectorAll('.remove').forEach(remove => remove.addEventListener('click', removeSong.bind(remove)));
 
-	calctotalSetTime();
+	calcTotalSongTime();
 	totalSetTimeDisp.textContent = data.totalSetTime;
 }
+
+// set list
+function renderSet() {
+	if (data.songs.map)
+		setListDisp.innerHTML = data.songs.sort(() => 0.5 - Math.random())
+			.map(song => `
+					<div>${song.title} - ${song.duration}</div>
+				`)
+			.join('');
+}
+genBtn.addEventListener('click', renderSet);

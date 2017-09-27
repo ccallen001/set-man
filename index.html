@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 
+<!-- *************************************************************************************************************** -->
+<!-- head -->
+
 <head>
 	<meta charset="UTF-8">
 	<title>Set Man 1.0</title>
@@ -10,9 +13,33 @@
 	<link rel="stylesheet" href="css/style.css" />
 </head>
 
+<!-- *************************************************************************************************************** -->
+<!-- body -->
+
 <body>
+
 	<h1>Set Man</h1>
-	<div class="ui">
+	<nav>
+		<ul>
+			<li>VIEW ALL</li>
+			<li>ADD SONG</li>
+			<li>GET LIST</li>
+		</ul>
+	</nav>
+
+	<!-- view -->
+	<div class="view">
+		<h3>All Songs</h3>
+		<div class="songs">
+			<!--
+				songs render here
+			-->
+		</div>
+		<h4>total time: <span class="total-time"></span> secs</h4>
+	</div>
+
+	<!-- add -->
+	<div class="add">
 		<div>
 			<div class="inline-block">
 				<label>Title: </label>
@@ -40,20 +67,27 @@
 			</div>
 		</div>
 		<!-- add button -->
-		<button class="add">ADD</button>
+		<button class="addBtn">ADD</button>
 	</div>
-	<div class="display">
+
+	<!-- get -->
+	<div class="get">
 		<h3>Set List</h3>
-		<div class="songs">
+		<!-- gen button -->
+		<button class="genBtn">GENERATE</button>
+
+		<div class="set">
 			<!--
-				songs render here
+				set renders here
 			-->
 		</div>
-		<h4>total time: <span class="total-time"></span> secs</h4>
 	</div>
+
 </body>
 
+<!-- *************************************************************************************************************** -->
 <!-- Firebase -->
+
 <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-database.js"></script>
 <script>
@@ -65,11 +99,17 @@
 		storageBucket: "",
 		messagingSenderId: "625185003867"
 	});
+
 </script>
 
+<!-- *************************************************************************************************************** -->
 <!-- js files -->
+
 <script>
 	require('./js/renderer.js');
+
 </script>
+
+<!-- *************************************************************************************************************** -->
 
 </html>
