@@ -38,11 +38,12 @@ var age, duration, genre, id, lead, title;
 
 // DOM
 
-const [view, add, get] = document.querySelectorAll('nav li'),
+const background = document.querySelector('.background'),
+	[view, add, gen] = document.querySelectorAll('nav li'),
 	viewDisp = document.querySelector('.view'),
 	addDisp = document.querySelector('.add'),
-	getDisp = document.querySelector('.get'),
-	disps = [viewDisp, addDisp, getDisp],
+	genDisp = document.querySelector('.gen'),
+	disps = [viewDisp, addDisp, genDisp],
 	[titleInp, leadInp, genreInp, ageInp, durationInp] = document.querySelectorAll('.add input'),
 	songListDisp = document.querySelector('.view .songs'),
 	addBtn = document.querySelector('button.addBtn'),
@@ -55,8 +56,9 @@ const [view, add, get] = document.querySelectorAll('nav li'),
 // CONTROLLERS
 
 // nav
-[view, add, get].forEach((li, i) => {
+[view, add, gen].forEach((li, i) => {
 	li.addEventListener('click', () => {
+		background.style.opacity = 0.2;
 		disps.forEach(li => li.classList.remove('active'));
 		disps[i].classList.add('active');
 	});
@@ -64,11 +66,11 @@ const [view, add, get] = document.querySelectorAll('nav li'),
 
 // add
 function addSong() {
-	title = titleInp.value.trim() || null;
-	lead = leadInp.value.trim() || null;
-	genre = genreInp.value.trim() || null;
-	age = ageInp.value.trim() || null;
-	duration = durationInp.value.trim() || null;
+	title = titleInp.value.trim() || '';
+	lead = leadInp.value.trim() || '';
+	genre = genreInp.value.trim() || '';
+	age = ageInp.value.trim() || '';
+	duration = durationInp.value.trim() || '';
 
 	if (
 		!data.leads.includes(lead.toLowerCase()) ||
@@ -76,7 +78,12 @@ function addSong() {
 		window.isNaN(Number(age)) ||
 		!/[0-9]:[0-9][0-9]/.test(duration)
 	) {
-		window.alert('Oops! There was an error. Please try again!');
+		window.alert(
+			`Oops! There was an error.
+Please fill out all fields and try again.
+
+HINT: Duration must be in min:sec format.`
+		);
 	} else {
 
 		// Where songs are made...
@@ -104,8 +111,8 @@ function addSong() {
 }
 addBtn.addEventListener('click', addSong);
 
-// remove
-function removeSong() {
+// del
+function delSong() {
 	data.songs = data.songs.filter(song => {
 		return song.id !== Number(this.parentElement.dataset.songId);
 	});
@@ -137,20 +144,20 @@ function renderSongs() {
 			.map(song => `
 				<div class="song" data-song-id="${song.id}">
 					<span
-						class="remove"
+						class="del"
 						style="
 							font-weight: bold;
 							cursor: pointer;
 						"
 					>
-						(X)
+						( X )
 					</span>
 					<div class="inline-block">${song.title} - ${song.duration}</div>
 				</div>
 			`)
 			.join('');
 
-	document.querySelectorAll('.remove').forEach(remove => remove.addEventListener('click', removeSong.bind(remove)));
+	document.querySelectorAll('.del').forEach(del => del.addEventListener('click', delSong.bind(del)));
 
 	calcTotalSongTime();
 	totalSetTimeDisp.textContent = data.totalSetTime;
@@ -164,5 +171,7 @@ function renderSet() {
 					<div>${song.title} - ${song.duration}</div>
 				`)
 			.join('');
+
+	genBtn.blur();
 }
 genBtn.addEventListener('click', renderSet);

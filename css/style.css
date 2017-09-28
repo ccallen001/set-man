@@ -1,75 +1,83 @@
-body,
-body *:not(script) {
-  display: block;
-  box-sizing: border-box;
-  margin-bottom: 0 !important;
-  color: #272727;
-  text-align: center;
-  border-color: #9E9E9E !important;
-  outline: none; }
-  body input,
-  body button,
-  body span,
-  body .inline-block,
-  body *:not(script) input,
-  body *:not(script) button,
-  body *:not(script) span,
-  body *:not(script) .inline-block {
-    display: inline-block !important; }
-  body button,
-  body *:not(script) button {
-    border: 1px solid #cacaca;
-    font-weight: bold;
-    cursor: pointer !important; }
-  body .remove::selection,
-  body *:not(script) .remove::selection {
-    background: none; }
-  body nav ul li,
-  body *:not(script) nav ul li {
-    display: inline-block;
-    padding: 12px 32px;
-    background-color: #9E9E9E;
-    color: white;
-    font-weight: bold;
-    cursor: pointer; }
-    body nav ul li:focus, body nav ul li:hover, body nav ul li:active,
-    body *:not(script) nav ul li:focus,
-    body *:not(script) nav ul li:hover,
-    body *:not(script) nav ul li:active {
-      background-color: #3D92C7; }
-  body .view, body .add, body .get,
-  body *:not(script) .view,
-  body *:not(script) .add,
-  body *:not(script) .get {
-    display: none; }
-  body .active,
-  body *:not(script) .active {
-    display: block; }
-  body label,
-  body *:not(script) label {
-    width: 100px;
-    font-weight: bold;
-    text-align: left; }
-  body input,
-  body *:not(script) input {
-    width: 150px; }
-    body input.title,
-    body *:not(script) input.title {
-      width: 621.09375px; }
-  body button.addBtn, body button.genBtn,
-  body *:not(script) button.addBtn,
-  body *:not(script) button.genBtn {
-    padding: 12px 32px;
-    background-color: #3D92C7;
-    color: white;
-    border: none !important; }
-    body button.addBtn:focus, body button.addBtn:hover, body button.addBtn:active, body button.genBtn:focus, body button.genBtn:hover, body button.genBtn:active,
-    body *:not(script) button.addBtn:focus,
-    body *:not(script) button.addBtn:hover,
-    body *:not(script) button.addBtn:active,
-    body *:not(script) button.genBtn:focus,
-    body *:not(script) button.genBtn:hover,
-    body *:not(script) button.genBtn:active {
-      background-color: #30D36E; }
+body {
+  height: 100vh;
+  background-color: #010101 !important; }
+  body:not(script) {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 0 !important;
+    background-color: transparent;
+    color: #efefef;
+    text-align: center; }
+    body:not(script) input,
+    body:not(script) button,
+    body:not(script) span,
+    body:not(script) .inline-block {
+      display: inline-block !important;
+      outline: none !important; }
+    body:not(script) button {
+      border: none;
+      font-weight: bold;
+      cursor: pointer !important; }
+    body:not(script) .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: url("../assets/logo.jpg") no-repeat center -16px/400px;
+      background-attachment: fixed;
+      transform: translate(6px); }
+    body:not(script) h1 {
+      margin: 16px auto; }
+    body:not(script) nav ul li {
+      display: inline-block;
+      padding: 12px 32px;
+      color: #00ACE7;
+      font-weight: bold;
+      border: 1px solid #00ACE7;
+      cursor: pointer; }
+      body:not(script) nav ul li:focus, body:not(script) nav ul li:hover, body:not(script) nav ul li:active {
+        color: #E8048B;
+        border-color: #E8048B; }
+    body:not(script) .view, body:not(script) .add, body:not(script) .gen {
+      display: none; }
+    body:not(script) .active {
+      display: block; }
+    body:not(script) .all-songs {
+      margin-top: 16px; }
+    body:not(script) .instructions {
+      margin-bottom: 16px;
+      font-weight: bold;
+      letter-spacing: 1px; }
+    body:not(script) .del {
+      margin-right: 4px; }
+    body:not(script) .del:hover {
+      color: #E8048B; }
+    body:not(script) .del::selection {
+      background: none; }
+    body:not(script) .view h4 {
+      margin-top: 20px;
+      font-style: italic; }
+    body:not(script) label {
+      width: 100px;
+      color: #efefef;
+      font-weight: bold;
+      text-align: left; }
+    body:not(script) input {
+      width: 150px; }
+      body:not(script) input.title {
+        width: 621.09375px; }
+    body:not(script) button.addBtn, body:not(script) button.genBtn {
+      margin-top: 24px;
+      padding: 12px 32px;
+      background-color: #00ACE7;
+      color: #efefef;
+      border: none !important; }
+      body:not(script) button.addBtn:focus, body:not(script) button.addBtn:hover, body:not(script) button.addBtn:active, body:not(script) button.genBtn:focus, body:not(script) button.genBtn:hover, body:not(script) button.genBtn:active {
+        background-color: #E8048B; }
+    body:not(script) button.genBtn {
+      margin: 16px auto 24px; }
 
 /*# sourceMappingURL=style.css.map */

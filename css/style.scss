@@ -1,98 +1,158 @@
-body,
-body *:not(script) {
+body {
     // VARIABLES -------------------------------------------------------------------------------------------------------
 
     // color palette
-    $black: #272727;
-    $blue: #3D92C7;
-    $green: #30D36E;
-    $gray: #9E9E9E;
+    $black: #010101;
+    $blue: #00ACE7;
+    $pink: #E8048B;
+    $gray: #CECECE;
+    $white: #efefef;
 
     // dimensions
     $width: 150px;
 
-    // GENERALS -------------------------------------------------------------------------------------------------------
+    // body styling
+    height: 100vh;
+    background-color: $black !important;
 
-    display: block;
-    box-sizing: border-box;
-    margin-bottom: 0 !important;
-    color: $black;
-    text-align: center;
+    &:not(script) {
+        // GENERALS ----------------------------------------------------------------------------------------------------
 
-    // border: 1px solid $gray;
-    border-color: $gray !important;
-    outline: none;
+        display: block;
+        position: relative;
+        box-sizing: border-box;
+        margin-bottom: 0 !important;
+        background-color: transparent;
+        color: $white;
+        text-align: center;
 
-    input,
-    button,
-    span,
-    .inline-block {
-        display: inline-block !important;
-    }
+        // border: 1px solid $gray;
 
-    button {
-        border: 1px solid rgba(202, 202, 202, 1);
-        font-weight: bold;
-        cursor: pointer !important;
-    }
+        input,
+        button,
+        span,
+        .inline-block {
+            display: inline-block !important;
+            outline: none !important;
+        }
 
-    .remove::selection {
-        background: none;
-    }
+        button {
+            border: none;
+            font-weight: bold;
+            cursor: pointer !important;
+        }
 
-    // SPECIFICS -------------------------------------------------------------------------------------------------------
+        // SPECIFICS ---------------------------------------------------------------------------------------------------
 
-    nav {
-        ul {
-            li {
-                display: inline-block;
-                padding: 12px 32px;
-                background-color: $gray;
-                color: white;
-                font-weight: bold;
-                cursor: pointer;
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: url("../assets/logo.jpg") no-repeat center -16px / 400px;
+            background-attachment: fixed;
+            transform: translate(6px);
+        }
 
-                &:focus,
-                &:hover,
-                &:active {
-                    background-color: $blue;
+        h1 {
+            margin: 16px auto;
+        }
+
+        nav {
+            ul {
+                li {
+                    display: inline-block;
+                    padding: 12px 32px;
+                    color: $blue;
+                    font-weight: bold;
+                    border: 1px solid $blue;
+                    cursor: pointer;
+
+                    &:focus,
+                    &:hover,
+                    &:active {
+                        color: $pink;
+                        border-color: $pink;
+                    }
                 }
             }
         }
-    }
 
-    .view, .add, .get {
-        display: none;
-    }
-
-    .active {
-        display: block;
-    }
-
-    label {
-        width: 100px;
-        font-weight: bold;
-        text-align: left;
-    }
-
-    input {
-        width: $width;
-
-        &.title {
-            width: $width * 4.140625;
+        .view, .add, .gen {
+            display: none;
         }
-    }
 
-    button.addBtn, button.genBtn {
-        padding: 12px 32px;
-        background-color: $blue;
-        color: white;
-        border: none !important;
+        .active {
+            display: block;
+        }
 
-        &:focus,
-        &:hover,
-        &:active {
-            background-color: $green;
+        // view/del ----------------------------------------------------------------------------------------------------
+
+        .all-songs {
+            margin-top: 16px;
+        }
+
+        // click (X) to delete
+        .instructions {
+            margin-bottom: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .del {
+            margin-right: 4px;
+        }
+
+        .del:hover {
+            color: $pink;
+        }
+
+        .del::selection {
+            background: none;
+        }
+
+        .view h4 {
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        // add ---------------------------------------------------------------------------------------------------------
+
+        label {
+            width: 100px;
+            color: $white;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input {
+            width: $width;
+
+            &.title {
+                width: $width * 4.140625;
+            }
+        }
+
+        button.addBtn, button.genBtn {
+            margin-top: 24px;
+            padding: 12px 32px;
+            background-color: $blue;
+            color: $white;
+            border: none !important;
+
+            &:focus,
+            &:hover,
+            &:active {
+                background-color: $pink;
+            }
+        }
+
+        // gen ---------------------------------------------------------------------------------------------------------
+
+        button.genBtn {
+            margin: 16px auto 24px;
         }
     }
 }

@@ -6,7 +6,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Set Man 1.0</title>
+	<title>Set Manager 1.0</title>
 
 	<!-- styles -->
 	<link rel="stylesheet" href="css/foundation.min.css" />
@@ -17,20 +17,21 @@
 <!-- body -->
 
 <body>
+	<div class="background"></div>
 
-	<h1>Set Man</h1>
+	<h1>Set Manager</h1>
 	<nav>
 		<ul>
-			<li>VIEW ALL</li>
+			<li>VIEW/DEL</li>
 			<li>ADD SONG</li>
-			<li>GET LIST</li>
+			<li>GEN SET</li>
 		</ul>
 	</nav>
 
 	<!-- view -->
 	<div class="view">
-		<h3>All Songs</h3>
-		<h5> - click (X) to remove - </h5>
+		<h3 class="all-songs">All Songs</h3>
+		<h5 class="instructions"> - click (X) to delete - </h5>
 		<div class="songs">
 			<!--
 				songs render here
@@ -72,7 +73,7 @@
 	</div>
 
 	<!-- get -->
-	<div class="get">
+	<div class="gen">
 		<h3>Set List</h3>
 		<!-- gen button -->
 		<button class="genBtn">GENERATE</button>

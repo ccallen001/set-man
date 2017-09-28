@@ -1,17 +1,17 @@
 {
-	"name": "set-man",
-	"productName": "Set Man",
+	"name": "set-manager",
+	"productName": "Set Manager",
 	"version": "1.0.0",
-	"description": "A tool to help manage set lists",
+	"description": "A tool to manager set lists",
 	"main": "main.js",
 	"scripts": {
 		"start": "electron ."
 	},
-	"repository": "",
+	"repository": "https://github.com/ccallen001/set-man",
 	"keywords": [
 		"Electron",
 		"set",
-		"man"
+		"manager"
 	],
 	"author": "Chase Allen",
 	"license": "CC0-1.0",
