@@ -82,7 +82,7 @@ function addSong() {
 			`Oops! There was an error.
 Please fill out all fields and try again.
 
-HINT: Duration must be in min:sec format.`
+TIP: Duration must be in min:sec format.`
 		);
 	} else {
 
@@ -108,6 +108,8 @@ HINT: Duration must be in min:sec format.`
 		.forEach(input => input.value = null);
 
 	titleInp.focus();
+
+	window.alert(`SUCCESS! ${title} added!`);
 }
 addBtn.addEventListener('click', addSong);
 

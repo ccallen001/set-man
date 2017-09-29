@@ -1,6 +1,7 @@
 body {
   height: 100vh;
-  background-color: #010101 !important; }
+  background-color: #010101 !important;
+  overflow-x: hidden; }
   body:not(script) {
     display: block;
     position: relative;
