@@ -1,7 +1,6 @@
 body {
   height: 100vh;
-  background-color: #010101 !important;
-  overflow-x: hidden; }
+  background-color: #010101 !important; }
   body:not(script) {
     display: block;
     position: relative;
@@ -58,6 +57,18 @@ body {
       color: #E8048B; }
     body:not(script) .del::selection {
       background: none; }
+    body:not(script) .song {
+      cursor: default; }
+      body:not(script) .song input {
+        margin: 0;
+        padding: 0;
+        width: 2em;
+        background-color: transparent;
+        color: #efefef;
+        border: none;
+        cursor: pointer; }
+        body:not(script) .song input:focus, body:not(script) .song input:hover {
+          color: #E8048B; }
     body:not(script) .view h4 {
       margin-top: 20px;
       font-style: italic; }

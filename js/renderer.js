@@ -31,8 +31,11 @@ var data = {
 };
 
 // variables
-var age, duration, genre, id, lead, title;
+var age, duration, genre, id, lead, title,
+	errorMessage0 = `Oops! There was an error.
+Please fill out all fields and try again.
 
+TIP: Duration must be in min:secsec format.`;
 
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -78,12 +81,7 @@ function addSong() {
 		window.isNaN(Number(age)) ||
 		!/[0-9]:[0-9][0-9]/.test(duration)
 	) {
-		window.alert(
-			`Oops! There was an error.
-Please fill out all fields and try again.
-
-TIP: Duration must be in min:sec format.`
-		);
+		window.alert(errorMessage0);
 	} else {
 
 		// Where songs are made...
@@ -101,15 +99,15 @@ TIP: Duration must be in min:sec format.`
 		// -------------------------
 
 		renderSongs();
+
+		// clear inputs
+		[titleInp, leadInp, genreInp, ageInp, durationInp]
+			.forEach(input => input.value = null);
+
+		titleInp.focus();
+
+		window.alert(`SUCCESS! ${title} added!`);
 	}
-
-	// clear inputs
-	[titleInp, leadInp, genreInp, ageInp, durationInp]
-		.forEach(input => input.value = null);
-
-	titleInp.focus();
-
-	window.alert(`SUCCESS! ${title} added!`);
 }
 addBtn.addEventListener('click', addSong);
 
@@ -154,12 +152,26 @@ function renderSongs() {
 					>
 						( X )
 					</span>
-					<div class="inline-block">${song.title} - ${song.duration}</div>
+					<div class="inline-block">
+						${song.title} - <input data-song-id="${song.id}" value="${song.duration}" />
+					</div>
 				</div>
 			`)
 			.join('');
 
+	// del songs
 	document.querySelectorAll('.del').forEach(del => del.addEventListener('click', delSong.bind(del)));
+
+	// change time
+	document.querySelectorAll('.song input').forEach(time => time.addEventListener('change', function () {
+		if (!/[0-9]:[0-9][0-9]/.test(this.value)) {
+			window.alert(errorMessage0);
+		} else {
+			data.songs.filter(song => song.id === Number(this.dataset.songId))[0].duration = this.value;
+		}
+
+		renderSongs();
+	}));
 
 	calcTotalSongTime();
 	totalSetTimeDisp.textContent = data.totalSetTime;

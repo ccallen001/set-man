@@ -14,7 +14,6 @@ body {
     // body styling
     height: 100vh;
     background-color: $black !important;
-    overflow-x: hidden;
 
     &:not(script) {
         // GENERALS ----------------------------------------------------------------------------------------------------
@@ -112,6 +111,25 @@ body {
 
         .del::selection {
             background: none;
+        }
+
+        .song {
+            cursor: default;
+
+            input {
+                margin: 0;
+                padding: 0;
+                width: 2em;
+                background-color: transparent;
+                color: $white;
+                border: none;
+                cursor: pointer;
+
+                &:focus,
+                &:hover {
+                    color: $pink;
+                }
+            }
         }
 
         .view h4 {

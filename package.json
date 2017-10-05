@@ -1,11 +1,11 @@
 {
 	"name": "set-manager",
 	"productName": "Set Manager",
-	"version": "1.0.0",
-	"description": "A tool to manager set lists",
+	"version": "1.1.0",
+	"description": "A tool to manage set lists",
 	"main": "main.js",
 	"scripts": {
-		"start": "electron ."
+		"run": "electron ."
 	},
 	"repository": "https://github.com/ccallen001/set-man",
 	"keywords": [
