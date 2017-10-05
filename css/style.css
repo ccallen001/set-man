@@ -89,7 +89,10 @@ body {
       border: none !important; }
       body:not(script) button.addBtn:focus, body:not(script) button.addBtn:hover, body:not(script) button.addBtn:active, body:not(script) button.genBtn:focus, body:not(script) button.genBtn:hover, body:not(script) button.genBtn:active {
         background-color: #E8048B; }
-    body:not(script) button.genBtn {
+    body:not(script) .gen button.genBtn {
       margin: 16px auto 24px; }
+    body:not(script) .gen h4.total-set-time {
+      margin-top: 20px;
+      font-style: italic; }
 
 /*# sourceMappingURL=style.css.map */

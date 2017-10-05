@@ -170,8 +170,21 @@ body {
 
         // gen ---------------------------------------------------------------------------------------------------------
 
-        button.genBtn {
-            margin: 16px auto 24px;
+        .gen {
+            label {}
+
+            input.maxSetTime {}
+
+            button.genBtn {
+                margin: 16px auto 24px;
+            }
+
+            h4.total-set-time {
+                margin-top: 20px;
+                font-style: italic;
+
+                span {}
+            }
         }
     }
 }

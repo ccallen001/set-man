@@ -27,7 +27,7 @@ var data = {
 	songs: [], // gets populated by the Firebase call
 	leads: ['bobbie', 'jack', 'tom'],
 	genres: ['pop', 'rock', 'country'],
-	totalSetTime: 0
+	allSongsTime: 0
 };
 
 // variables
@@ -51,8 +51,10 @@ const background = document.querySelector('.background'),
 	songListDisp = document.querySelector('.view .songs'),
 	addBtn = document.querySelector('button.addBtn'),
 	setListDisp = document.querySelector('.set'),
+	genInp = document.querySelector('.gen .maxSetTime'),
 	genBtn = document.querySelector('button.genBtn'),
-	totalSetTimeDisp = document.querySelector('.total-time');
+	setListMaxTimeDisp = document.querySelector('.total-set-time span'),
+	allSongsTimeDisp = document.querySelector('.total-time');
 
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -122,7 +124,7 @@ function delSong() {
 
 // calculate total time
 function calcTotalSongTime() {
-	data.totalSetTime = data.songs.reduce((a, b) => {
+	data.allSongsTime = data.songs.reduce((a, b) => {
 		b = b.duration.split(':');
 		b = ((Number(b[0]) * 60) || 0) + (Number(b[1]) || 0);
 
@@ -174,7 +176,7 @@ function renderSongs() {
 	}));
 
 	calcTotalSongTime();
-	totalSetTimeDisp.textContent = data.totalSetTime;
+	allSongsTimeDisp.textContent = data.allSongsTime;
 }
 
 // set list
