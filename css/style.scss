@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Passion+One");
+
 body {
     // VARIABLES -------------------------------------------------------------------------------------------------------
 
@@ -26,7 +28,7 @@ body {
         color: $white;
         text-align: center;
 
-        // border: 1px solid $gray;
+        /*border: 1px solid $gray;*/
 
         input,
         button,
@@ -64,6 +66,8 @@ body {
             ul {
                 li {
                     display: inline-block;
+                    margin-right: 8px;
+                    margin-left: 8px;
                     padding: 12px 32px;
                     color: $blue;
                     font-weight: bold;
@@ -80,7 +84,9 @@ body {
             }
         }
 
-        .view, .add, .gen {
+        .view,
+        .add,
+        .gen {
             display: none;
         }
 
@@ -154,7 +160,8 @@ body {
             }
         }
 
-        button.addBtn, button.genBtn {
+        button.addBtn,
+        button.genBtn {
             margin-top: 24px;
             padding: 12px 32px;
             background-color: $blue;
@@ -176,7 +183,7 @@ body {
             input.maxSetTime {}
 
             button.genBtn {
-                margin: 16px auto 24px;
+                margin: 28px auto 24px;
             }
 
             h4.total-set-time {

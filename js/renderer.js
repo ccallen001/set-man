@@ -53,7 +53,7 @@ const background = document.querySelector('.background'),
 	setListDisp = document.querySelector('.set'),
 	genInp = document.querySelector('.gen .maxSetTime'),
 	genBtn = document.querySelector('button.genBtn'),
-	setListMaxTimeDisp = document.querySelector('.total-set-time span'),
+	setListTimeDisp = document.querySelector('.total-set-time span'),
 	allSongsTimeDisp = document.querySelector('.total-time');
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -77,8 +77,7 @@ function addSong() {
 	age = ageInp.value.trim() || '';
 	duration = durationInp.value.trim() || '';
 
-	if (
-		!data.leads.includes(lead.toLowerCase()) ||
+	if (!data.leads.includes(lead.toLowerCase()) ||
 		!data.genres.includes(genre.toLowerCase()) ||
 		window.isNaN(Number(age)) ||
 		!/[0-9]:[0-9][0-9]/.test(duration)
@@ -141,7 +140,7 @@ function renderSongs() {
 	// send to database
 	database.set(data.songs.length > 0 ? data.songs : null);
 
-	if (data.songs.map)
+	if (data.songs.map) {
 		songListDisp.innerHTML = data.songs
 			.map(song => `
 				<div class="song" data-song-id="${song.id}">
@@ -160,6 +159,7 @@ function renderSongs() {
 				</div>
 			`)
 			.join('');
+	}
 
 	// del songs
 	document.querySelectorAll('.del').forEach(del => del.addEventListener('click', delSong.bind(del)));
@@ -181,13 +181,47 @@ function renderSongs() {
 
 // set list
 function renderSet() {
-	if (data.songs.map)
-		setListDisp.innerHTML = data.songs.sort(() => 0.5 - Math.random())
-			.map(song => `
-					<div>${song.title} - ${song.duration}</div>
-				`)
-			.join('');
+	if (data.songs.map) {
+		if (genInp.value) {
+			if (!/[0-9]?[0-9]?:?[0-9]?[0-9]:[0-9][0-9]/.test(genInp.value)) {
+				window.alert(errorMessage0);
+			} else {
+				let maxTime = genInp.value,
+					randomList = data.songs.sort(() => 0.5 - Math.random()),
+					renderedRandomList = [],
+					rollingTime = 0;
 
+				maxTime = maxTime.split(':');
+				if (maxTime.length <= 2) {
+					maxTime = (Number(maxTime[0]) * 60) + (Number(maxTime[1]));
+				} else {
+					maxTime = (Number[0] * 3600) + (Number(maxTime[0]) * 60) + (Number(maxTime[1]));
+				}
+
+				for (let i = 0; i < randomList.length; i++) {
+					const duration = randomList[i].duration.split(':');
+
+					rollingTime += (Number(duration[0]) * 60) + (Number(duration[1]));
+
+					if (rollingTime < maxTime) {
+						renderedRandomList.push(randomList[i]);
+					} else {
+						break;
+					}
+				}
+
+				setListDisp.innerHTML = renderedRandomList
+					.map(song => `
+						<div>${song.title} - ${song.duration}</div>
+					`)
+					.join('');
+
+				setListTimeDisp.textContent = rollingTime;
+			}
+		}
+	}
+
+	genInp.value = null;
 	genBtn.blur();
 }
 genBtn.addEventListener('click', renderSet);

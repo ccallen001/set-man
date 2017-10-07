@@ -5,7 +5,7 @@
 	"description": "A tool to manage set lists",
 	"main": "main.js",
 	"scripts": {
-		"run": "electron ."
+		"start": "electron ."
 	},
 	"repository": "https://github.com/ccallen001/set-man",
 	"keywords": [

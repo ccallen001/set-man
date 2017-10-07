@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Passion+One");
 body {
   height: 100vh;
   background-color: #010101 !important; }
@@ -8,7 +9,8 @@ body {
     margin-bottom: 0 !important;
     background-color: transparent;
     color: #efefef;
-    text-align: center; }
+    text-align: center;
+    /*border: 1px solid $gray;*/ }
     body:not(script) input,
     body:not(script) button,
     body:not(script) span,
@@ -33,6 +35,8 @@ body {
       margin: 16px auto; }
     body:not(script) nav ul li {
       display: inline-block;
+      margin-right: 8px;
+      margin-left: 8px;
       padding: 12px 32px;
       color: #00ACE7;
       font-weight: bold;
@@ -41,7 +45,9 @@ body {
       body:not(script) nav ul li:focus, body:not(script) nav ul li:hover, body:not(script) nav ul li:active {
         color: #E8048B;
         border-color: #E8048B; }
-    body:not(script) .view, body:not(script) .add, body:not(script) .gen {
+    body:not(script) .view,
+    body:not(script) .add,
+    body:not(script) .gen {
       display: none; }
     body:not(script) .active {
       display: block; }
@@ -81,16 +87,20 @@ body {
       width: 150px; }
       body:not(script) input.title {
         width: 621.09375px; }
-    body:not(script) button.addBtn, body:not(script) button.genBtn {
+    body:not(script) button.addBtn,
+    body:not(script) button.genBtn {
       margin-top: 24px;
       padding: 12px 32px;
       background-color: #00ACE7;
       color: #efefef;
       border: none !important; }
-      body:not(script) button.addBtn:focus, body:not(script) button.addBtn:hover, body:not(script) button.addBtn:active, body:not(script) button.genBtn:focus, body:not(script) button.genBtn:hover, body:not(script) button.genBtn:active {
+      body:not(script) button.addBtn:focus, body:not(script) button.addBtn:hover, body:not(script) button.addBtn:active,
+      body:not(script) button.genBtn:focus,
+      body:not(script) button.genBtn:hover,
+      body:not(script) button.genBtn:active {
         background-color: #E8048B; }
     body:not(script) .gen button.genBtn {
-      margin: 16px auto 24px; }
+      margin: 28px auto 24px; }
     body:not(script) .gen h4.total-set-time {
       margin-top: 20px;
       font-style: italic; }
