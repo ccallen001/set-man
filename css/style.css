@@ -1,26 +1,57 @@
-@import url("https://fonts.googleapis.com/css?family=Passion+One");
+@import url("https://fonts.googleapis.com/css?family=Monoton");
 body {
+  padding-top: 32px;
   height: 100vh;
-  background-color: #010101 !important; }
+  background-color: #010101 !important;
+  overflow-y: hidden; }
   body:not(script) {
+    /*
+    // border ALL THE THINGS!
+    * {
+        border: 1px solid white;
+    }
+    */
     display: block;
-    position: relative;
     box-sizing: border-box;
+    position: relative;
     margin-bottom: 0 !important;
     background-color: transparent;
     color: #efefef;
-    text-align: center;
-    /*border: 1px solid $gray;*/ }
+    font-family: sans-serif !important;
+    letter-spacing: 1px !important;
+    text-align: center; }
     body:not(script) input,
     body:not(script) button,
     body:not(script) span,
     body:not(script) .inline-block {
       display: inline-block !important;
       outline: none !important; }
+    body:not(script) input:not(._durInp) {
+      background-color: #d6d6d6 !important; }
     body:not(script) button {
-      border: none;
       font-weight: bold;
-      cursor: pointer !important; }
+      border: none;
+      border-radius: 4px;
+      cursor: pointer !important;
+      transition: background-color 200ms; }
+      body:not(script) button:active {
+        transform: scale(0.95); }
+    body:not(script) button.addBtn,
+    body:not(script) button.genBtn,
+    body:not(script) button.printBtn {
+      margin-top: 24px;
+      padding: 12px 32px;
+      background-color: #00ACE7;
+      color: #efefef;
+      border: none !important; }
+      body:not(script) button.addBtn:focus, body:not(script) button.addBtn:hover, body:not(script) button.addBtn:active,
+      body:not(script) button.genBtn:focus,
+      body:not(script) button.genBtn:hover,
+      body:not(script) button.genBtn:active,
+      body:not(script) button.printBtn:focus,
+      body:not(script) button.printBtn:hover,
+      body:not(script) button.printBtn:active {
+        background-color: #E8048B; }
     body:not(script) .background {
       position: absolute;
       top: 0;
@@ -28,23 +59,34 @@ body {
       z-index: -1;
       width: 100%;
       height: 100%;
-      background: url("../assets/logo.jpg") no-repeat center -16px/400px;
+      background: url("../assets/logo.jpg") no-repeat center 220px/400px;
       background-attachment: fixed;
-      transform: translate(6px); }
+      box-shadow: inset 0 -50px 100px #84024f;
+      opacity: 0.6; }
     body:not(script) h1 {
-      margin: 16px auto; }
-    body:not(script) nav ul li {
-      display: inline-block;
-      margin-right: 8px;
-      margin-left: 8px;
-      padding: 12px 32px;
-      color: #00ACE7;
-      font-weight: bold;
-      border: 1px solid #00ACE7;
-      cursor: pointer; }
-      body:not(script) nav ul li:focus, body:not(script) nav ul li:hover, body:not(script) nav ul li:active {
-        color: #E8048B;
-        border-color: #E8048B; }
+      margin: 0 auto 50px;
+      color: white !important;
+      font-family: monoton, sans-serif !important;
+      font-size: 64px;
+      letter-spacing: 1px !important;
+      text-shadow: 0 1px 32px white; }
+    body:not(script) nav ul {
+      display: flex;
+      justify-content: space-around;
+      margin: 0;
+      margin-bottom: 32px; }
+      body:not(script) nav ul li {
+        display: inline-block;
+        padding: 12px 32px;
+        color: #00ACE7;
+        font-weight: bold;
+        border: 2px solid #bcbcbc;
+        border-radius: 2px;
+        box-shadow: 0 2px 32px rgba(255, 255, 255, 0.5);
+        cursor: pointer; }
+        body:not(script) nav ul li:focus, body:not(script) nav ul li:hover, body:not(script) nav ul li:active {
+          text-shadow: 0 1px 32px #efefef;
+          box-shadow: 0 1px 64px #E8048B; }
     body:not(script) .view,
     body:not(script) .add,
     body:not(script) .gen {
@@ -79,7 +121,7 @@ body {
       margin-top: 20px;
       font-style: italic; }
     body:not(script) label {
-      width: 100px;
+      width: 128px;
       color: #efefef;
       font-weight: bold;
       text-align: left; }
@@ -87,20 +129,19 @@ body {
       width: 150px; }
       body:not(script) input.title {
         width: 621.09375px; }
-    body:not(script) button.addBtn,
-    body:not(script) button.genBtn {
-      margin-top: 24px;
-      padding: 12px 32px;
-      background-color: #00ACE7;
-      color: #efefef;
-      border: none !important; }
-      body:not(script) button.addBtn:focus, body:not(script) button.addBtn:hover, body:not(script) button.addBtn:active,
-      body:not(script) button.genBtn:focus,
-      body:not(script) button.genBtn:hover,
-      body:not(script) button.genBtn:active {
-        background-color: #E8048B; }
     body:not(script) .gen button.genBtn {
       margin: 28px auto 24px; }
+    body:not(script) .gen button.printBtn {
+      position: absolute;
+      top: 256px;
+      right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      transform: translate(100%);
+      transition: transform 333ms ease-out; }
+      body:not(script) .gen button.printBtn i {
+        display: inline-block;
+        margin-right: 4px; }
     body:not(script) .gen h4.total-set-time {
       margin-top: 20px;
       font-style: italic; }

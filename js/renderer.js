@@ -11,6 +11,7 @@ database.once('value', d => {
 	data.songs = d.val() || [];
 
 	// gets greatest songId value and sets it as starting point for adding new ids
+	// ids are used in deleting/rendering songs on the view page
 	id = data.songs.map(song => Number(song.id)).sort().pop() || 0;
 
 	calcTotalSongTime();
@@ -30,7 +31,7 @@ var data = {
 	allSongsTime: 0
 };
 
-// variables
+// global variables
 var age, duration, genre, id, lead, title,
 	errorMessage0 = `Oops! There was an error.
 Please fill out all fields and try again.
@@ -42,19 +43,23 @@ TIP: Duration must be in min:secsec format.`;
 // DOM
 
 const background = document.querySelector('.background'),
+	//
 	[view, add, gen] = document.querySelectorAll('nav li'),
 	viewDisp = document.querySelector('.view'),
 	addDisp = document.querySelector('.add'),
 	genDisp = document.querySelector('.gen'),
 	disps = [viewDisp, addDisp, genDisp],
+	//
 	[titleInp, leadInp, genreInp, ageInp, durationInp] = document.querySelectorAll('.add input'),
 	songListDisp = document.querySelector('.view .songs'),
 	addBtn = document.querySelector('button.addBtn'),
+	allSongsTimeDisp = document.querySelector('.total-time'),
+	//
 	setListDisp = document.querySelector('.set'),
 	genInp = document.querySelector('.gen .maxSetTime'),
 	genBtn = document.querySelector('button.genBtn'),
-	setListTimeDisp = document.querySelector('.total-set-time span'),
-	allSongsTimeDisp = document.querySelector('.total-time');
+	printBtn = document.querySelector('button.printBtn'),
+	setListTimeDisp = document.querySelector('.total-set-time span');
 
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -154,7 +159,7 @@ function renderSongs() {
 						( X )
 					</span>
 					<div class="inline-block">
-						${song.title} - <input data-song-id="${song.id}" value="${song.duration}" />
+						${song.title} - <input class="_durInp" data-song-id="${song.id}" value="${song.duration}" />
 					</div>
 				</div>
 			`)
@@ -186,12 +191,11 @@ function renderSet() {
 			if (!/[0-9]?[0-9]?:?[0-9]?[0-9]:[0-9][0-9]/.test(genInp.value)) {
 				window.alert(errorMessage0);
 			} else {
-				let maxTime = genInp.value,
+				let maxTime = genInp.value.split(':'), // returns an array
+					rollingTime = 0,
 					randomList = data.songs.sort(() => 0.5 - Math.random()),
-					renderedRandomList = [],
-					rollingTime = 0;
+					renderedRandomList = [];
 
-				maxTime = maxTime.split(':');
 				if (maxTime.length <= 2) {
 					maxTime = (Number(maxTime[0]) * 60) + (Number(maxTime[1]));
 				} else {
@@ -201,9 +205,9 @@ function renderSet() {
 				for (let i = 0; i < randomList.length; i++) {
 					const duration = randomList[i].duration.split(':');
 
-					rollingTime += (Number(duration[0]) * 60) + (Number(duration[1]));
+					if (rollingTime <= maxTime) {
+						rollingTime += (Number(duration[0]) * 60) + (Number(duration[1]));
 
-					if (rollingTime < maxTime) {
 						renderedRandomList.push(randomList[i]);
 					} else {
 						break;
@@ -217,11 +221,19 @@ function renderSet() {
 					.join('');
 
 				setListTimeDisp.textContent = rollingTime;
+
+				printBtn.style.transform = 'translate(0)';
 			}
 		}
 	}
 
-	genInp.value = null;
+	// genInp.value = null;
 	genBtn.blur();
 }
 genBtn.addEventListener('click', renderSet);
+
+//print
+printBtn.addEventListener('click', function () {
+	window.print();
+	this.blur();
+});

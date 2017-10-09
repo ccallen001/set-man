@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Passion+One");
+@import url("https://fonts.googleapis.com/css?family=Monoton");
 
 body {
     // VARIABLES -------------------------------------------------------------------------------------------------------
@@ -13,22 +13,36 @@ body {
     // dimensions
     $width: 150px;
 
+    // font
+    $font: sans-serif;
+    $spacing: 1px;
+
     // body styling
+    // padding-top effectively controls the margin-top of the h1
+    padding-top: 32px;
     height: 100vh;
     background-color: $black !important;
+    overflow-y: hidden;
 
     &:not(script) {
         // GENERALS ----------------------------------------------------------------------------------------------------
 
+        /*
+        // border ALL THE THINGS!
+        * {
+            border: 1px solid white;
+        }
+        */
+
         display: block;
-        position: relative;
         box-sizing: border-box;
+        position: relative;
         margin-bottom: 0 !important;
         background-color: transparent;
         color: $white;
+        font-family: $font !important;
+        letter-spacing: $spacing !important;
         text-align: center;
-
-        /*border: 1px solid $gray;*/
 
         input,
         button,
@@ -38,10 +52,36 @@ body {
             outline: none !important;
         }
 
+        input:not(._durInp) {
+            background-color: darken($white, 10%) !important;
+        }
+
         button {
-            border: none;
             font-weight: bold;
+            border: none;
+            border-radius: 4px;
             cursor: pointer !important;
+            transition: background-color 200ms;
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+
+        button.addBtn,
+        button.genBtn,
+        button.printBtn {
+            margin-top: 24px;
+            padding: 12px 32px;
+            background-color: $blue;
+            color: $white;
+            border: none !important;
+
+            &:focus,
+            &:hover,
+            &:active {
+                background-color: $pink;
+            }
         }
 
         // SPECIFICS ---------------------------------------------------------------------------------------------------
@@ -53,42 +93,57 @@ body {
             z-index: -1;
             width: 100%;
             height: 100%;
-            background: url("../assets/logo.jpg") no-repeat center -16px / 400px;
+            background: url("../assets/logo.jpg") no-repeat center 220px / 400px;
             background-attachment: fixed;
-            transform: translate(6px);
+            box-shadow: inset 0 -50px 100px darken($pink, 20%);
+            opacity: 0.6;
         }
 
         h1 {
-            margin: 16px auto;
+            margin: 0 auto 50px;
+            color: white !important;
+            font-family: monoton, sans-serif !important;
+            font-size: 64px;
+            letter-spacing: $spacing !important;
+            text-shadow: 0 1px 32px rgba(255, 255, 255, 1);
         }
 
         nav {
             ul {
+                display: flex;
+                justify-content: space-around;
+                margin: 0;
+                margin-bottom: 32px;
+
                 li {
                     display: inline-block;
-                    margin-right: 8px;
-                    margin-left: 8px;
                     padding: 12px 32px;
                     color: $blue;
                     font-weight: bold;
-                    border: 1px solid $blue;
+                    border: 2px solid darken($white, 20%);
+                    border-radius: 2px;
+                    box-shadow: 0 2px 32px rgba(255, 255, 255, 0.5);
                     cursor: pointer;
 
                     &:focus,
                     &:hover,
                     &:active {
-                        color: $pink;
-                        border-color: $pink;
+                        text-shadow: 0 1px 32px $white;
+                        box-shadow: 0 1px 64px $pink;
                     }
                 }
             }
         }
+
+        // initially hidden
 
         .view,
         .add,
         .gen {
             display: none;
         }
+
+        // used to show active area... controlled by js
 
         .active {
             display: block;
@@ -100,7 +155,7 @@ body {
             margin-top: 16px;
         }
 
-        // click (X) to delete
+        // "click (X) to delete"
         .instructions {
             margin-bottom: 16px;
             font-weight: bold;
@@ -146,7 +201,7 @@ body {
         // add ---------------------------------------------------------------------------------------------------------
 
         label {
-            width: 100px;
+            width: 128px;
             color: $white;
             font-weight: bold;
             text-align: left;
@@ -160,21 +215,6 @@ body {
             }
         }
 
-        button.addBtn,
-        button.genBtn {
-            margin-top: 24px;
-            padding: 12px 32px;
-            background-color: $blue;
-            color: $white;
-            border: none !important;
-
-            &:focus,
-            &:hover,
-            &:active {
-                background-color: $pink;
-            }
-        }
-
         // gen ---------------------------------------------------------------------------------------------------------
 
         .gen {
@@ -184,6 +224,21 @@ body {
 
             button.genBtn {
                 margin: 28px auto 24px;
+            }
+
+            button.printBtn {
+                position: absolute;
+                top: 256px;
+                right: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                transform: translate(100%);
+                transition: transform 333ms ease-out;
+
+                i {
+                    display: inline-block;
+                    margin-right: 4px;
+                }
             }
 
             h4.total-set-time {
