@@ -3,7 +3,7 @@ body {
   padding-top: 32px;
   height: 100vh;
   background-color: #010101 !important;
-  overflow-y: hidden; }
+  overflow-x: hidden; }
   body:not(script) {
     /*
     // border ALL THE THINGS!
@@ -27,7 +27,7 @@ body {
       display: inline-block !important;
       outline: none !important; }
     body:not(script) input:not(._durInp) {
-      background-color: #d6d6d6 !important; }
+      background-color: #efefef !important; }
     body:not(script) button {
       font-weight: bold;
       border: none;
@@ -62,7 +62,7 @@ body {
       background: url("../assets/logo.jpg") no-repeat center 128px/420px;
       background-attachment: fixed;
       box-shadow: inset 0 -16px 32px #84024f;
-      opacity: 0.6;
+      opacity: 0.8;
       transform: translate(-2px); }
     body:not(script) h1 {
       margin: 0 auto 32px;
@@ -83,7 +83,7 @@ body {
         font-weight: bold;
         border: 2px solid #bcbcbc;
         border-radius: 2px;
-        box-shadow: 0 2px 16px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 1px 16px rgba(255, 255, 255, 0.5);
         cursor: pointer; }
         body:not(script) nav ul li:focus, body:not(script) nav ul li:hover, body:not(script) nav ul li:active {
           text-shadow: 0 1px 32px #efefef;
@@ -101,7 +101,8 @@ body {
       font-weight: bold;
       letter-spacing: 1px; }
     body:not(script) .del {
-      margin-right: 4px; }
+      margin-right: 4px;
+      letter-spacing: 0; }
     body:not(script) .del:hover {
       color: #E8048B; }
     body:not(script) .del::selection {
@@ -133,12 +134,11 @@ body {
     body:not(script) .gen button.genBtn {
       margin: 28px auto 24px; }
     body:not(script) .gen button.printBtn {
-      position: absolute;
-      top: 256px;
-      right: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      transform: translate(100%);
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      border-radius: 50%;
+      transform: translate(200%);
       transition: transform 333ms ease-out; }
       body:not(script) .gen button.printBtn i {
         display: inline-block;
