@@ -59,17 +59,18 @@ body {
       z-index: -1;
       width: 100%;
       height: 100%;
-      background: url("../assets/logo.jpg") no-repeat center 220px/400px;
+      background: url("../assets/logo.jpg") no-repeat center 128px/420px;
       background-attachment: fixed;
-      box-shadow: inset 0 -50px 100px #84024f;
-      opacity: 0.6; }
+      box-shadow: inset 0 -16px 32px #84024f;
+      opacity: 0.6;
+      transform: translate(-2px); }
     body:not(script) h1 {
-      margin: 0 auto 50px;
+      margin: 0 auto 32px;
       color: white !important;
       font-family: monoton, sans-serif !important;
       font-size: 64px;
       letter-spacing: 1px !important;
-      text-shadow: 0 1px 32px white; }
+      text-shadow: 0 1px 16px rgba(255, 255, 255, 0.9); }
     body:not(script) nav ul {
       display: flex;
       justify-content: space-around;
@@ -82,7 +83,7 @@ body {
         font-weight: bold;
         border: 2px solid #bcbcbc;
         border-radius: 2px;
-        box-shadow: 0 2px 32px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 2px 16px rgba(255, 255, 255, 0.5);
         cursor: pointer; }
         body:not(script) nav ul li:focus, body:not(script) nav ul li:hover, body:not(script) nav ul li:active {
           text-shadow: 0 1px 32px #efefef;
