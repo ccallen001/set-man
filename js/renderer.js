@@ -205,7 +205,7 @@ function renderSet() {
 				for (let i = 0; i < randomList.length; i++) {
 					const duration = randomList[i].duration.split(':');
 
-					if (rollingTime <= maxTime) {
+					if (rollingTime < maxTime) {
 						rollingTime += (Number(duration[0]) * 60) + (Number(duration[1]));
 
 						renderedRandomList.push(randomList[i]);
